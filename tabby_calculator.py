@@ -7,7 +7,7 @@ def calculate_installments(payment_value,payment_method):
     # Calculate 7% of the payment value
     installment_amount = payment_value + calculate_servicecharge(payment_value,payment_method)
     # Divide the payment into 4 installments
-    installment_amount = math.ceil(installment_amount / 4)
+    installment_amount = installment_amount / 4
     return installment_amount
 
 
@@ -15,6 +15,12 @@ def calculate_servicecharge(payment_value, payment_method):
     # Calculate 7% of the payment value
     if payment_method == 'Tabby':
         percent = 6.9 / 100
+        service_charge = payment_value * percent
+    elif payment_method == 'payment link':
+        percent = 3 / 100
+        service_charge = payment_value * percent
+    elif payment_method == 'Card':
+        percent = 2.5 / 100
         service_charge = payment_value * percent
     else:
         service_charge = 0
@@ -34,8 +40,8 @@ def calculate_button_clicked():
         # Display the results
         result_text = f"Payment Method: {payment_method}\n"
         result_text += f"Payment Value: ${payment_value:.2f}\n"
+        result_text += f"Service Charge: ${servicecharge:.2f}\n"
         if payment_method == 'Tabby':
-            result_text += f"Service Charge: ${servicecharge:.2f}\n"
             result_text += f"Installment 1: ${installment_amount:.2f}\n"
             result_text += f"Installment 2: ${installment_amount:.2f}\n"
             result_text += f"Installment 3: ${installment_amount:.2f}\n"
@@ -53,7 +59,7 @@ root = tk.Tk()
 root.title("Installment Calculator")
 
 # Payment methods
-payment_methods = ['Cash','Tabby', 'Credit Card']
+payment_methods = ['Cash', 'Card', 'payment link','Tabby']
 
 # Payment Value
 payment_label = ttk.Label(root, text="Enter Payment Value:")
