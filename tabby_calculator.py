@@ -41,6 +41,7 @@ def calculate_button_clicked():
         result_text = f"Payment Method: {payment_method}\n"
         result_text += f"Payment Value: AED{payment_value:.2f}\n"
         result_text += f"Service Charge: AED{servicecharge:.2f}\n"
+        result_text += f"Total Amount: AED{payment_value+servicecharge:.2f}\n"
         if payment_method == 'Tabby':
             result_text += f"Installment 1: AED{installment_amount:.2f}\n"
             result_text += f"Installment 2: AED{installment_amount:.2f}\n"
