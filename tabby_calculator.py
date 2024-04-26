@@ -25,7 +25,7 @@ def calculate_servicecharge(payment_value, payment_method):
     else:
         service_charge = 0
 
-    return service_charge
+    return math.ceil(service_charge)
 
 
 def calculate_button_clicked():
@@ -39,13 +39,13 @@ def calculate_button_clicked():
 
         # Display the results
         result_text = f"Payment Method: {payment_method}\n"
-        result_text += f"Payment Value: ${payment_value:.2f}\n"
-        result_text += f"Service Charge: ${servicecharge:.2f}\n"
+        result_text += f"Payment Value: AED{payment_value:.2f}\n"
+        result_text += f"Service Charge: AED{servicecharge:.2f}\n"
         if payment_method == 'Tabby':
-            result_text += f"Installment 1: ${installment_amount:.2f}\n"
-            result_text += f"Installment 2: ${installment_amount:.2f}\n"
-            result_text += f"Installment 3: ${installment_amount:.2f}\n"
-            result_text += f"Installment 4: ${installment_amount:.2f}"
+            result_text += f"Installment 1: AED{installment_amount:.2f}\n"
+            result_text += f"Installment 2: AED{installment_amount:.2f}\n"
+            result_text += f"Installment 3: AED{installment_amount:.2f}\n"
+            result_text += f"Installment 4: AED{installment_amount:.2f}"
     
 
         result_label.config(text=result_text)
